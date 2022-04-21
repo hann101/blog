@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +25,24 @@
             <a class="navbar-brand" href="/blog">한종민 블로그</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="/blog/user/loginForm">로그인</a></li>
-                <li><a href="/blog/user/joinForm">회원가입</a></li>
-            </ul>
+
+            <c:choose>
+                <c:when test="${empty sessionScope.principal}">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/blog/user/loginForm">로그인</a></li>
+                        <li><a href="/blog/user/joinForm">회원가입</a></li>
+                    </ul>
+                </c:when>
+                <c:otherwise>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/blog/board.writeForm">글쓰기</a></li>
+                        <li><a href="/blog/user/userForm">회원정보</a></li>
+                        <li><a href="/blog/user/logout">로그아웃</a></li>
+                    </ul>
+                </c:otherwise>
+            </c:choose>
+
+
         </div>
     </div>
 </nav>

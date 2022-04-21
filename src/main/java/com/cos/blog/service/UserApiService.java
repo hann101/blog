@@ -12,15 +12,15 @@ public class UserApiService {
     private UserRepository userRepository;
 
     @Transactional
-    public int SignIn(User user){
-        try{
+    public void SignIn(User user){
             userRepository.save(user);
-            return  1;
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println("User 회원가입"+ e.getMessage());
-
-        }
-    return -1;
     }
+
+    @Transactional(readOnly = true) //select시 트랜젝션 시작, 서비스 종료시 트랜젝션 종료(정합성)
+    public User login(User user) {
+
+        return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+    }
+
+
 }
