@@ -13,7 +13,7 @@ let index={
                 email:$("#email").val()
 
             }
-            // console.log(data)
+            console.log(data)
             $.ajax({
                 type:"POST",
                 url:"/blog/api/user",
@@ -21,7 +21,7 @@ let index={
                 contentType:"application/json; charset=utf-8",
                 dataType:"json"
             }).done(function(resp){
-                alert("회원가입 완료");
+                alert("ffff 완료");
                 console.log(resp)
                 location.href="/blog"
             }).fail(function (error){
