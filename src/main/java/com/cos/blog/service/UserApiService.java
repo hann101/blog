@@ -1,8 +1,10 @@
 package com.cos.blog.service;
 
+import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,16 +13,19 @@ public class UserApiService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     @Transactional
     public void SignIn(User user){
+        String rawPassword = user.getPassword();
+        String encPassword = encoder.encode(rawPassword);
+
+        System.out.println(encPassword);
+        user.setPassword(encPassword);
+
+
+        user.setRole(RoleType.USER);
             userRepository.save(user);
     }
-
-    @Transactional(readOnly = true) //select시 트랜젝션 시작, 서비스 종료시 트랜젝션 종료(정합성)
-    public User login(User user) {
-
-        return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-    }
-
-
 }
