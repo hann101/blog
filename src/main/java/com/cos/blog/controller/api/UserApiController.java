@@ -26,10 +26,10 @@ public class UserApiController {
     @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user ,HttpSession session){
         System.out.println("UserApiController : save 호출");
-        user.setRole(RoleType.USER);
-
-
         userApiService.SignIn(user);
         return  new ResponseDto<Integer>(HttpStatus.OK.value(),1) ;
     }
+
+
+
 }
