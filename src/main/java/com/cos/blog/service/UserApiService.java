@@ -21,12 +21,10 @@ public class UserApiService {
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);
 
-
-        System.out.println(encPassword);
+//        user.setPassword(encPassword);
         user.setPassword(encPassword);
         user.setRole(RoleType.USER);
 
-        user.setRole(RoleType.USER);
-            userRepository.save(user);
+        userRepository.save(user);
     }
 }

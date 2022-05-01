@@ -13,6 +13,8 @@ import java.nio.file.attribute.UserPrincipal;
 @Service//Bean등록
 public class PrincipalDetailService implements UserDetailsService {
 
+    private User user;
+
     @Autowired
     private UserRepository userRepository;
 

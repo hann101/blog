@@ -3,29 +3,20 @@
 
 
 <div class="container">
-    <div class="card m-2" >
-<%--        <img class="card-img-top" src="img_avatar1.png" alt="Card image">--%>
-        <div class="card-body">
-            <h4 class="card-title">제목</h4>
-            <p class="card-text">내용</p>
-            <a href="#" class="btn btn-primary">상세보기</a>
+    <c:forEach var="board" items="${boards.content}">
+        <div class="card m-2" >
+            <div class="card-body">
+                <h4 class="card-title">${board.title}</h4>
+                <a href="#" class="btn btn-primary">상세보기</a>
+            </div>
         </div>
-    </div>
-    <div class="card m-2" >
-        <%--        <img class="card-img-top" src="img_avatar1.png" alt="Card image">--%>
-        <div class="card-body">
-            <h4 class="card-title">제목</h4>
-            <p class="card-text">내용</p>
-            <a href="#" class="btn btn-primary">상세보기</a>
-        </div>
-    </div>
-    <div class="card m-2" >
-        <%--        <img class="card-img-top" src="img_avatar1.png" alt="Card image">--%>
-        <div class="card-body">
-            <h4 class="card-title">제목</h4>
-            <p class="card-text">내용</p>
-            <a href="#" class="btn btn-primary">상세보기</a>
-        </div>
-    </div>
+    </c:forEach>
+
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
 </div>
+
+
 <%@ include file="layout/footer.jsp"%>
