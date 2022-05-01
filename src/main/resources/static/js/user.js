@@ -6,10 +6,8 @@ let index={
 
     },
         save:function() {
-            // alert('user의 save함수 호출됨;')
             let data={
                 username:$("#username").val(),
-                //#"id".val값을 찾아온다.
                 password:$("#password").val(),
                 email:$("#email").val()
 

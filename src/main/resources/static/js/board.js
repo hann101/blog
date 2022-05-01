@@ -6,7 +6,6 @@ let index={
 
     },
     save:function() {
-        // ('board save함수 호출됨;')
         let data={
             title:$("#title").val(),
             content:$("#content").val()
@@ -21,7 +20,7 @@ let index={
             dataType:"json"
         }).done(function(resp){
             alert("등록완료 완료");
-            location.href="index.html"
+            location.href="/"
         }).fail(function (error){
                 alert((JSON.stringify(error)))
             }

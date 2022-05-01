@@ -12,8 +12,9 @@
                         <label for="content">Comment:</label>
                         <textarea class="form-control summernote" rows="5" id="content"></textarea>
                 </div>
-                <button id="btn-save" class="btn btn-primary">등록</button>
         </form>
+        <button id="btn-save" class="btn btn-primary">등록</button>
+<%--form 안에 있을때 alert안뜸 이유는..?--%>
 </div>
 <script>
         $('.summernote').summernote({
@@ -21,6 +22,6 @@
                 height: 100
         });
 </script>
-<script src="/js/board.js"> </script>
+<script src="/js/board.js"></script>
 
 <%@ include file="../layout/footer.jsp"%>
