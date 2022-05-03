@@ -33,6 +33,13 @@ public class BoardApiService {
     public Page<Board> boardList(Pageable pageable) {
         return boardRepository.findAll(pageable);
     }
+
+    public Board boardDetail(int id) {
+        return boardRepository.findById(id)
+                .orElseThrow(() -> {
+                    return new IllegalArgumentException("상세보기 실패");
+                });
+    }
 }
 
 

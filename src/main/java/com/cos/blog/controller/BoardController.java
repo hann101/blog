@@ -10,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 //views로 지정해야하고 RestController말고 Controller를 사용해야한다.
 //Front end
@@ -24,10 +25,14 @@ public class BoardController {
         model.addAttribute("boards",boardApiService.boardList(pageable));
         return "index";
     }
-
     @GetMapping("/board/saveForm")
     public String saveForm(){
 
         return "board/saveForm";
+    }
+    @GetMapping("/board/{id}")
+    public String findById(@PathVariable int id, Model model){
+        model.addAttribute("board", boardApiService.boardDetail(id));
+        return "board/detail";
     }
 }
