@@ -1,7 +1,9 @@
 package com.cos.blog.testController;
 
+import com.cos.blog.model.Board;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
+import com.cos.blog.repository.BoardRepository;
 import com.cos.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,9 @@ public class DummyControllerTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BoardRepository boardRepository;
 
     @GetMapping("/dummy/users")
     public List<User> list(){
@@ -77,6 +82,12 @@ public class DummyControllerTest {
         return null;
     }
 
+
+    @GetMapping("/dummy/board/{id}")
+    public Board getBoard(@PathVariable int id){
+        //객체돌려줌
+        return boardRepository.findById(id).get();
+    }
 
 
 

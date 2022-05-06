@@ -1,5 +1,6 @@
 package com.cos.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,7 +40,8 @@ public class Board {
     private User user;
 
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) //하나의 게시글의 여러개의 댓글들.Mapped by 연관관계의 주인이 아닌것을 명시.
-    private List<Reply> Reply;
+    @JsonIgnoreProperties({"board"}) //무한참조를 막기위함
+    private List<Reply> Replys;
 
 
     @CreationTimestamp

@@ -20,6 +20,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private PrincipalDetailService principalDetailService;
 
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception{
+        return super.authenticationManagerBean();
+
+    }
+
+
     @Bean //IoC가 되서 스프링이 관리하게됨.. 필요할때 쓸 수 있음
     public BCryptPasswordEncoder encoderPWD(){
         return new BCryptPasswordEncoder();
