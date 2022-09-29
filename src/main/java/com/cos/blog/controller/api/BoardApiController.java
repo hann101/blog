@@ -18,7 +18,7 @@ public class BoardApiController {
     @Autowired
     BoardApiService boardApiService;
 
-    @PostMapping("/api/board")//ddasdasdasdasdasd
+    @PostMapping("/api/board")//fdsfsfdsf
     public ResponseDto<Integer> save(@RequestBody Board board, @AuthenticationPrincipal PrincipalDetail principal) {
 
         System.out.println("BoardApiController : save 호출");
